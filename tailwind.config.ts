@@ -13,6 +13,10 @@ export default {
         secondary: 'rgb(var(--tw-color-secondary) / <alpha-value>)',
         accent: 'rgb(var(--tw-color-accent) / <alpha-value>)',
       },
+      boxShadow: {
+        neumorphism:
+          '6px 6px 10px rgb(var(--tw-color-primary) / 0.4), -6px -6px 10px rgb(var(--tw-color-primary))',
+      },
       keyframes: {
         flicker: {
           '0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
