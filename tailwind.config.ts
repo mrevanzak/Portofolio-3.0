@@ -18,6 +18,8 @@ export default {
           '6px 6px 10px rgb(var(--tw-color-primary) / 0.4), -6px -6px 10px rgb(var(--tw-color-primary))',
         neumorphismHover:
           '10px 10px 15px rgb(var(--tw-color-primary) / 0.4), -10px -10px 15px rgb(var(--tw-color-primary))',
+        neumorphismInset:
+          'inset 6px 6px 10px rgb(var(--tw-color-primary) / 0.4), inset -6px -6px 10px rgb(var(--tw-color-primary))',
       },
       keyframes: {
         flicker: {

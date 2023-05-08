@@ -2,6 +2,7 @@ import * as React from 'react';
 import { HiDocumentText } from 'react-icons/hi';
 
 import Card from '@/components/Card';
+import DiscordCard from '@/components/DiscordCard';
 import Layout from '@/components/layout/Layout';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
@@ -51,8 +52,8 @@ export default function HomePage() {
                 height={100}
               />
               <div className='m-4 flex flex-col justify-center'>
-                <h2 className='text-2xl font-bold'>Hello, I'm Revan</h2>
-                <p className='text-sm'>I'm a frontend Developer</p>
+                <h2>Hello, I'm Revan</h2>
+                <p>I'm a frontend Developer</p>
               </div>
             </Card>
             <Card className='h-80 w-80 space-y-4' onClick={onDownload}>
@@ -60,7 +61,7 @@ export default function HomePage() {
               <p>Download my CV</p>
             </Card>
             <Card className='h-80 w-80 flex-auto space-y-4'>
-              <p> Discord Activity</p>
+              <DiscordCard />
             </Card>
           </div>
           <div className='mt-8 flex flex-wrap gap-8'>
