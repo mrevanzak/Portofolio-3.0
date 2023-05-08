@@ -36,23 +36,33 @@ export default function DiscordCard() {
         />
       </div>
       <div className='shadow-neumorphismInset flex items-center space-x-4 rounded-xl p-4'>
-        <NextImage
-          src={getDiscordImgUrl(
-            'app-assets',
-            data?.activities[0]?.application_id,
-            data?.activities[0]?.assets?.large_image
-          )}
-          width={70}
-          height={70}
-          alt='Discord activity'
-          imgClassName='rounded-xl'
-        />
-        <div>
-          <h4>Playing {data?.activities[0]?.name}</h4>
-          <p>{data?.activities[0]?.details}</p>
-          <p>{data?.activities[0]?.state}</p>
-          <p>{data?.activities[0]?.timestamps?.start}</p>
-        </div>
+        {data?.activities[0]?.type === 0 ? (
+          <>
+            <NextImage
+              src={
+                data?.activities[0]?.assets
+                  ? getDiscordImgUrl(
+                      'app-assets',
+                      data?.activities[0]?.application_id,
+                      data?.activities[0]?.assets?.large_image
+                    )
+                  : `https://dcdn.dstn.to/app-icons/${data?.activities[0].application_id}`
+              }
+              width={70}
+              height={70}
+              alt='Discord activity'
+              imgClassName='rounded-xl'
+            />
+            <div>
+              <h4>{data?.activities[0]?.name}</h4>
+              <p>{data?.activities[0]?.details}</p>
+              <p>{data?.activities[0]?.state}</p>
+              <p>{data?.activities[0]?.timestamps?.start}</p>
+            </div>
+          </>
+        ) : (
+          <h4>Not playing anything</h4>
+        )}
       </div>
     </>
   );

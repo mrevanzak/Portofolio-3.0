@@ -8,7 +8,7 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    domains: ['cdn.discordapp.com'],
+    domains: ['cdn.discordapp.com', 'dcdn.dstn.to'],
   },
 
   // SVGR
