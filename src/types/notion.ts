@@ -6,11 +6,21 @@ export interface LinkResult {
 
 interface LinkProperties {
   Title: TitleColumn;
+  Tags: MultiSelectColumn;
+  Date: DateColumn;
+  Excerpt: TextColumn;
   Image: ImageColumn;
+  slug: TextColumn;
 }
 //#endregion  //*======== Links ===========
 
 //#region  //*=========== Commons ===========
+interface DateColumn {
+  id: string;
+  type: 'date';
+  date: { start: string };
+}
+
 interface ImageColumn {
   id: string;
   type: 'files';
@@ -39,11 +49,11 @@ interface TitleColumn {
   title: [RichText];
 }
 
-// interface TextColumn {
-//   id: string;
-//   type: 'rich_text';
-//   rich_text: [RichText | undefined];
-// }
+interface TextColumn {
+  id: string;
+  type: 'rich_text';
+  rich_text: [RichText | undefined];
+}
 
 // interface NumberColumn {
 //   id: string;
@@ -51,12 +61,10 @@ interface TitleColumn {
 //   number: number;
 // }
 
-// interface MultiSelectColumn {
-//   id: string;
-//   multi_select: {
-//     options: Array<{ name: string }>;
-//   };
-// }
+interface MultiSelectColumn {
+  id: string;
+  multi_select: Array<{ name: string }>;
+}
 
 interface RichText {
   type: string;

@@ -28,3 +28,27 @@ export const getCV = async () => {
     file: result.properties.Image.files[0].file.url,
   };
 };
+
+export const getProjects = async () => {
+  const response = await notion.databases.query({
+    database_id: DB,
+    filter: {
+      property: 'Published',
+      checkbox: {
+        equals: true,
+      },
+    },
+  });
+
+  const result = response.results as unknown as LinkResult[];
+
+  // console.log(result);
+
+  // return result;
+  return result.map((project) => ({
+    id: project.id,
+    title: project.properties.Title.title[0].plain_text,
+    tags: project.properties.Tags.multi_select.map((tag) => tag.name),
+    image: project.properties.Image.files[0].file.url,
+  }));
+};
