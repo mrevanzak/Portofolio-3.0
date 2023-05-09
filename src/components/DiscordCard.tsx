@@ -10,6 +10,27 @@ import { getDiscordImgUrl } from '@/utils/discordImg';
 export default function DiscordCard() {
   const { data } = api.discord.get.useQuery();
 
+  const since = new Date(data?.activities[0]?.timestamps?.start).getTime();
+
+  const [time, setTime] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date().getTime() - since);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [since]);
+
+  const timeElapsed = () => {
+    const seconds = Math.floor(time / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+
+    return `${hours > 0 ? `${hours}h ` : ''} ${
+      minutes > 0 ? `${minutes % 60}m ` : ''
+    } ${seconds > 0 ? `${seconds % 60}s` : ''}`;
+  };
+
   return (
     <>
       <div className='flex items-center justify-end space-x-4'>
@@ -57,7 +78,7 @@ export default function DiscordCard() {
               <h4>{data?.activities[0]?.name}</h4>
               <p>{data?.activities[0]?.details}</p>
               <p>{data?.activities[0]?.state}</p>
-              <p>{data?.activities[0]?.timestamps?.start}</p>
+              <p>{timeElapsed()}</p>
             </div>
           </>
         ) : (
