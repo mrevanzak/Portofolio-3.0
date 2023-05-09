@@ -24,7 +24,7 @@ import { api } from '@/utils/api';
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const helpers = createServerSideHelpers({
     router: appRouter,
     ctx: {},
@@ -39,6 +39,7 @@ export async function getServerSideProps() {
     props: {
       trpcState: helpers.dehydrate(),
     },
+    revalidate: 1,
   };
 }
 
