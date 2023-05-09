@@ -1,5 +1,7 @@
+import { createServerSideHelpers } from '@trpc/react-query/server';
 import * as React from 'react';
 import { HiDocumentText } from 'react-icons/hi';
+import superjson from 'superjson';
 
 import Card from '@/components/Card';
 import DiscordCard from '@/components/DiscordCard';
@@ -7,6 +9,7 @@ import Layout from '@/components/layout/Layout';
 import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
+import { appRouter } from '@/server/api/root';
 import { api } from '@/utils/api';
 
 /**
@@ -20,6 +23,24 @@ import { api } from '@/utils/api';
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
+
+export async function getServerSideProps() {
+  const helpers = createServerSideHelpers({
+    router: appRouter,
+    ctx: {},
+    transformer: superjson,
+  });
+
+  await helpers.resume.get.prefetch();
+  await helpers.projects.get.prefetch();
+  await helpers.discord.get.prefetch();
+
+  return {
+    props: {
+      trpcState: helpers.dehydrate(),
+    },
+  };
+}
 
 export default function HomePage() {
   const { data: cv } = api.resume.get.useQuery();
