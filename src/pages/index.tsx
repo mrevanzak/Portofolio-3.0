@@ -63,9 +63,9 @@ export default function HomePage() {
       <Seo />
 
       <main>
-        <div className='layout relative min-h-screen py-12'>
+        <div className='layout relative min-h-screen space-y-8 py-12'>
           <div className='flex flex-wrap gap-8'>
-            <Card className='h-80 flex-auto flex-row justify-start p-0'>
+            <Card className='flex-auto flex-row justify-start p-0'>
               <NextImage
                 imgClassName='grayscale'
                 src='/images/me.jpg'
@@ -78,18 +78,34 @@ export default function HomePage() {
                 <p>I'm a frontend Developer</p>
               </div>
             </Card>
-            <Card className='h-80 w-80 space-y-4' onClick={onDownload}>
-              <HiDocumentText className='text-5xl' />
-              <p>Download my CV</p>
+            <Card className='w-72 flex-auto space-y-4' onClick={onDownload}>
+              <HiDocumentText className='text-secondary m-auto text-9xl' />
+              <p>Discover me, check resume</p>
             </Card>
-            <Card className='relative h-80 w-80 flex-auto space-y-4'>
+            <Card className='relative w-72 flex-auto space-y-4'>
               <DiscordCard />
             </Card>
           </div>
-          <div className='mt-8 flex flex-wrap gap-8'>
+          <Card className='h-0'>
+            <h2 className='text-2xl font-bold'>
+              My projects, my passion, my potential. See for yourself
+            </h2>
+          </Card>
+          <div className='flex flex-wrap gap-8'>
             {data?.map((project) => (
-              <Card key={project.id} className=''>
+              <Card key={project.id} className='h-52 w-72 flex-auto space-y-4'>
                 <h2 className='text-2xl font-bold'>{project.title}</h2>
+                <div className='flex flex-wrap gap-2'>
+                  {project.tags.map((tag) => (
+                    <p
+                      key={tag}
+                      className='shadow-neumorphismInset2 rounded-full px-3 py-2 text-xs'
+                    >
+                      <span className='text-accent mr-2'>●</span>
+                      {tag}
+                    </p>
+                  ))}
+                </div>
               </Card>
             ))}
           </div>
