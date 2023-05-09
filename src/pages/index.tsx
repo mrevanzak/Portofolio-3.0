@@ -86,7 +86,7 @@ export default function HomePage() {
               <DiscordCard />
             </Card>
           </div>
-          <Card className='h-0'>
+          <Card className='h-auto py-4'>
             <h2 className='text-2xl font-bold'>
               My projects, my passion, my potential. See for yourself
             </h2>
