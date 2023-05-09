@@ -38,13 +38,16 @@ export const getProjects = async () => {
         equals: true,
       },
     },
+    sorts: [
+      {
+        property: 'Rank',
+        direction: 'ascending',
+      },
+    ],
   });
 
   const result = response.results as unknown as LinkResult[];
 
-  // console.log(result);
-
-  // return result;
   return result.map((project) => ({
     id: project.id,
     title: project.properties.Title.title[0].plain_text,
