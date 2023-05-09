@@ -35,7 +35,7 @@ export default function DiscordCard() {
   return (
     <>
       <div className='my-auto flex items-center justify-end space-x-4'>
-        <BsDiscord className='text-primary absolute left-4 top-4 -rotate-12 text-8xl' />
+        <BsDiscord className='text-primary absolute left-4 top-4 -z-[1] -rotate-12 text-8xl' />
         <div className='text-end'>
           <h2>{data?.username}</h2>
           <p>#{data?.discriminator}</p>
@@ -79,10 +79,10 @@ export default function DiscordCard() {
               imgClassName='rounded-xl'
             />
             <div>
-              <h4>{data?.activities[0]?.name}</h4>
-              <p>{data?.activities[0]?.details}</p>
-              <p>{data?.activities[0]?.state}</p>
-              <p>{timeElapsed()}</p>
+              <p className='font-bold'>{data?.activities[0]?.name}</p>
+              <p className='text-sm'>{data?.activities[0]?.details}</p>
+              <p className='text-sm'>{data?.activities[0]?.state}</p>
+              <p className='text-sm'>{timeElapsed()}</p>
             </div>
           </>
         ) : (
