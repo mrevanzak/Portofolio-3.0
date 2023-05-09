@@ -82,7 +82,7 @@ export default function HomePage() {
               <HiDocumentText className='text-5xl' />
               <p>Download my CV</p>
             </Card>
-            <Card className='h-80 w-80 flex-auto space-y-4'>
+            <Card className='relative h-80 w-80 flex-auto space-y-4'>
               <DiscordCard />
             </Card>
           </div>

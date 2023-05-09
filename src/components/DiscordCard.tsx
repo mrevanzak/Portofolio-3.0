@@ -1,4 +1,5 @@
 import React from 'react';
+import { BsDiscord } from 'react-icons/bs';
 
 import clsxm from '@/lib/clsxm';
 
@@ -33,7 +34,8 @@ export default function DiscordCard() {
 
   return (
     <>
-      <div className='flex items-center justify-end space-x-4'>
+      <div className='my-auto flex items-center justify-end space-x-4'>
+        <BsDiscord className='text-primary absolute left-4 top-4 -rotate-12 text-8xl' />
         <div className='text-end'>
           <h2>{data?.username}</h2>
           <p>#{data?.discriminator}</p>
@@ -67,7 +69,9 @@ export default function DiscordCard() {
                       data?.activities[0]?.application_id,
                       data?.activities[0]?.assets?.large_image
                     )
-                  : `https://dcdn.dstn.to/app-icons/${data?.activities[0].application_id}`
+                  : data?.activities[0]?.application_id
+                  ? `https://dcdn.dstn.to/app-icons/${data?.activities[0].application_id}`
+                  : 'https://i.imgur.com/j1HAfFJ.png'
               }
               width={70}
               height={70}
