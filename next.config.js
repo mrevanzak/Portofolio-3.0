@@ -8,11 +8,10 @@ const nextConfig = {
   swcMinify: true,
 
   images: {
-    domains: ['cdn.discordapp.com', 'dcdn.dstn.to', 'i.imgur.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.nflxso.net',
+        hostname: '**',
       },
     ],
   },
