@@ -6,7 +6,7 @@ import clsxm from '@/lib/clsxm';
 import NextImage from '@/components/NextImage';
 
 import { api } from '@/utils/api';
-import { getDiscordImgUrl } from '@/utils/discordImg';
+import { getActivityImage, getDiscordImgUrl } from '@/utils/discordImage';
 
 export default function DiscordCard() {
   const { data } = api.discord.get.useQuery();
@@ -62,21 +62,11 @@ export default function DiscordCard() {
         {data?.activities[0]?.type === 0 ? (
           <>
             <NextImage
-              src={
-                data?.activities[0]?.assets
-                  ? getDiscordImgUrl(
-                      'app-assets',
-                      data?.activities[0]?.application_id,
-                      data?.activities[0]?.assets?.large_image
-                    )
-                  : data?.activities[0]?.application_id
-                  ? `https://dcdn.dstn.to/app-icons/${data?.activities[0].application_id}`
-                  : 'https://i.imgur.com/j1HAfFJ.png'
-              }
-              width={70}
-              height={70}
+              src={getActivityImage(data.activities[0])}
+              fill
               alt='Discord activity'
-              imgClassName='rounded-xl'
+              imgClassName='rounded-xl object-cover'
+              className='relative h-16 w-16'
             />
             <div>
               <p className='font-bold'>{data?.activities[0]?.name}</p>
