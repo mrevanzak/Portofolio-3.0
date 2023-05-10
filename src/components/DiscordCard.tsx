@@ -66,7 +66,7 @@ export default function DiscordCard() {
               fill
               alt='Discord activity'
               imgClassName='rounded-xl object-cover'
-              className='relative h-16 w-16'
+              className='relative aspect-square h-16 w-16'
             />
             <div>
               <p className='font-bold'>{data?.activities[0]?.name}</p>
