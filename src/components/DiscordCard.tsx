@@ -71,7 +71,9 @@ export default function DiscordCard() {
             <div>
               <p className='font-bold'>{data?.activities[0]?.name}</p>
               <p className='text-sm'>{data?.activities[0]?.details}</p>
-              <p className='text-sm'>{data?.activities[0]?.state}</p>
+              <p className='line-clamp-1 text-sm'>
+                {data?.activities[0]?.state}
+              </p>
               <p className='text-sm'>{timeElapsed()}</p>
             </div>
           </>
