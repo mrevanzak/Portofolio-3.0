@@ -9,6 +9,7 @@ const server = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']),
   NOTION_KEY: z.string().min(1),
   NOTION_DATABASE: z.string().min(1),
+  NEXT_PUBLIC_SITE_URL: z.string().min(1),
 });
 
 /**
@@ -17,7 +18,6 @@ const server = z.object({
  */
 const client = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string().min(1),
-  NEXT_PUBLIC_SITE_URL: z.string().url(),
 });
 
 /**
@@ -30,7 +30,9 @@ const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
   NOTION_KEY: process.env.NOTION_KEY,
   NOTION_DATABASE: process.env.NOTION_DATABASE,
-  NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  NEXT_PUBLIC_SITE_URL: process.env.VERCEL
+    ? process.env.VERCEL_URL
+    : 'http://localhost:3000',
 };
 
 // Don't touch the part below
