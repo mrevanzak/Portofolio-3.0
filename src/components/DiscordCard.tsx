@@ -37,8 +37,8 @@ export default function DiscordCard() {
       <div className='my-auto flex items-center justify-end space-x-4'>
         <BsDiscord className='text-primary absolute left-4 top-4 -z-[1] -rotate-12 text-8xl' />
         <div className='text-end'>
-          <h2>{data?.username}</h2>
-          <p>#{data?.discriminator}</p>
+          <h2>{data?.global_name}</h2>
+          <p>{data?.username}</p>
         </div>
         <NextImage
           useSkeleton={data === null}

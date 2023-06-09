@@ -12,6 +12,7 @@ export const discordRouter = createTRPCRouter({
       id: data?.discord_user?.id,
       username: data?.discord_user?.username,
       discriminator: data?.discord_user?.discriminator,
+      global_name: data?.discord_user?.global_name,
       avatar: data?.discord_user?.avatar,
       status: data?.discord_status,
       activities: data?.activities,
