@@ -44,7 +44,7 @@ export async function getStaticProps() {
 }
 
 export default function HomePage() {
-  const { data: cv } = api.resume.get.useQuery();
+  const { data: cv, isFetching } = api.resume.get.useQuery();
   const { data } = api.projects.get.useQuery();
 
   const onDownload = () => {
@@ -80,7 +80,11 @@ export default function HomePage() {
             </Card>
             <Card className='w-72 flex-auto space-y-4' onClick={onDownload}>
               <HiDocumentText className='text-secondary m-auto text-9xl' />
-              <p>Discover me, check resume</p>
+              <p>
+                {isFetching
+                  ? 'Contructing the newest resume...'
+                  : 'Discover me, check resume'}
+              </p>
             </Card>
             <Card className='relative w-72 flex-auto space-y-4'>
               <DiscordCard />
