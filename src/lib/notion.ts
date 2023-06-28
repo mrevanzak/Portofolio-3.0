@@ -52,6 +52,5 @@ export const getProjects = async () => {
     id: project.id,
     title: project.properties.Title.title[0].plain_text,
     tags: project.properties.Tags.multi_select.map((tag) => tag.name),
-    image: project.properties.Image.files[0].file.url,
   }));
 };
