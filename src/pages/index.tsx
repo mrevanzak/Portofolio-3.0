@@ -1,4 +1,5 @@
 import { createServerSideHelpers } from '@trpc/react-query/server';
+import Link from 'next/link';
 import * as React from 'react';
 import { HiDocumentText } from 'react-icons/hi';
 import superjson from 'superjson';
@@ -98,7 +99,9 @@ export default function HomePage() {
           <div className='flex flex-wrap gap-8'>
             {data?.map((project) => (
               <Card key={project.id} className='h-52 w-72 flex-auto space-y-4'>
-                <h2 className='text-2xl font-bold'>{project.title}</h2>
+                <Link href={`/project/${project.id}`}>
+                  <h2 className='text-2xl font-bold'>{project.title}</h2>
+                </Link>
                 <div className='flex flex-wrap gap-2'>
                   {project.tags.map((tag) => (
                     <p

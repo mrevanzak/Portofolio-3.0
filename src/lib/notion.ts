@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+import { NotionAPI } from 'notion-client';
 
 import { env } from '@/env.mjs';
 
@@ -10,6 +11,7 @@ const KEY = env.NOTION_KEY;
 const notion = new Client({
   auth: KEY,
 });
+const notionAPI = new NotionAPI();
 
 export const getCV = async () => {
   const response = await notion.databases.query({
@@ -53,4 +55,10 @@ export const getProjects = async () => {
     title: project.properties.Title.title[0].plain_text,
     tags: project.properties.Tags.multi_select.map((tag) => tag.name),
   }));
+};
+
+export const getProjectDetail = async (id: string) => {
+  const response = await notionAPI.getPage(id);
+
+  return response;
 };
