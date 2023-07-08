@@ -100,10 +100,12 @@ export default function HomePage() {
             {data?.map((project) => (
               <Card key={project.id} className='h-52 w-72 flex-auto space-y-4'>
                 <Link href={`/project/${project.id}`}>
-                  <h2 className='text-2xl font-bold'>{project.title}</h2>
+                  <h2 className='line-clamp-1 text-2xl font-bold'>
+                    {project.title}
+                  </h2>
                 </Link>
                 <div className='flex flex-wrap gap-2'>
-                  {project.tags.map((tag) => (
+                  {project.tags.slice(0, 6).map((tag) => (
                     <p
                       key={tag}
                       className='shadow-neumorphismInset2 rounded-full px-3 py-2 text-xs'
