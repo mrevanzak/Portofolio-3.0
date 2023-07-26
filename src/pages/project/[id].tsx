@@ -43,9 +43,18 @@ export async function getStaticPaths() {
 
 export default function ProjectsPage() {
   const router = useRouter();
-  const { data } = api.projects.page.useQuery({
-    id: router.query.id as string,
-  });
+  const { data } = api.projects.page.useQuery(
+    {
+      id: router.query.id as string,
+    },
+    {
+      onError: (error) => {
+        if (error.data?.httpStatus === 500) {
+          router.push('/404');
+        }
+      },
+    }
+  );
 
   return (
     <Layout>
