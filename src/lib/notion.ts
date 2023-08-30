@@ -54,11 +54,21 @@ export const getProjects = async () => {
     id: project.id,
     title: project.properties.Title.title[0].plain_text,
     tags: project.properties.Tags.multi_select.map((tag) => tag.name),
+    slug: project.properties.Slug.rich_text[0]?.plain_text,
   }));
 };
 
-export const getProjectDetail = async (id: string) => {
-  const response = await notionAPI.getPage(id);
+export const getProjectDetail = async (slug: string) => {
+  const response = await notion.databases.query({
+    database_id: DB,
+    filter: {
+      property: 'Slug',
+      rich_text: {
+        equals: slug,
+      },
+    },
+  });
 
-  return response;
+  const result = response.results[0] as unknown as LinkResult;
+  return await notionAPI.getPage(result.id);
 };

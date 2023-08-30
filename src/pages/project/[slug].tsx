@@ -17,14 +17,14 @@ const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then((m) => m.Code)
 );
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const pageId = context?.params?.id as string;
+  const slug = context?.params?.slug as string;
   const helpers = createServerSideHelpers({
     router: appRouter,
     ctx: {},
     transformer: superjson,
   });
 
-  await helpers.projects.page.prefetch({ id: pageId });
+  await helpers.projects.page.prefetch({ slug });
 
   return {
     props: {
@@ -45,7 +45,7 @@ export default function ProjectsPage() {
   const router = useRouter();
   const { data } = api.projects.page.useQuery(
     {
-      id: router.query.id as string,
+      slug: router.query.slug as string,
     },
     {
       onError: (error) => {

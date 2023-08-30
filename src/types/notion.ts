@@ -10,7 +10,7 @@ interface LinkProperties {
   Date: DateColumn;
   Excerpt: TextColumn;
   Image: ImageColumn;
-  slug: TextColumn;
+  Slug: TextColumn;
 }
 //#endregion  //*======== Links ===========
 

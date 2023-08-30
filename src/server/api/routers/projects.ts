@@ -12,11 +12,11 @@ export const projectRouter = createTRPCRouter({
   page: publicProcedure
     .input(
       z.object({
-        id: z.string(),
+        slug: z.string(),
       })
     )
     .query(async ({ input }) => {
-      const projectPage = await getProjectDetail(input.id);
+      const projectPage = await getProjectDetail(input.slug);
       return projectPage;
     }),
 });

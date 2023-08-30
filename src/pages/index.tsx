@@ -99,7 +99,7 @@ export default function HomePage() {
           <div className='flex flex-wrap gap-8'>
             {data?.map((project) => (
               <Card key={project.id} className='h-52 w-72 flex-auto space-y-4'>
-                <Link href={`/project/${project.id}`}>
+                <Link href={`/project/${project.slug}`}>
                   <h2 className='line-clamp-1 text-2xl font-bold'>
                     {project.title}
                   </h2>
